@@ -25,6 +25,15 @@ router.post("/register", validateUser, (req, res) => {
 
 router.post("/login", (req, res) => {
   // implement login
+  const { username, password } = req.body;
+  
+  users.findByUsername(username)
+  .then(user => {
+    res.json(user)
+  })
+  .catch(err => {
+    res.status(500).json({ message: "Could not login user: " + err.message })
+  })
 });
 
 function validateUser(req, res, next){
