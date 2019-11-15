@@ -11,6 +11,10 @@ describe("server", () => {
       const response = await request(server).post("/api/auth/register");
       expect(response.status).toBe(401);
     });
+    test("Should return status 201 when credentials provided", async () => {
+        const response = await request(server).post("/api/auth/register").send({username: "Megan", password: "1234"});
+        expect(response.status).toBe(201);
+    })
   });
 
   describe("login endpoint", () => {
@@ -27,3 +31,4 @@ describe("server", () => {
     });
   });
 });
+
