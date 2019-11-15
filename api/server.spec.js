@@ -37,5 +37,14 @@ describe("server", () => {
       const response = await request(server).get("/api/jokes");
       expect(response.status).toBe(401);
     });
+    test("Should return 200 when token provided in request header", async () => {
+      const response = await request(server)
+        .get("/api/jokes")
+        .set(
+          "Authorization",
+          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWJqZWN0IjoxLCJ1c2VybmFtZSI6Ik1lZ2FuIiwiaWF0IjoxNTczODA3OTQwLCJleHAiOjE1NzM4OTQzNDB9.7vFilFd5bIlnVLvne8GON_51nK8c7xeInh-WoMY4GJI"
+        );
+      expect(response.status).toBe(200);
+    });
   });
 });
