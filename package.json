@@ -4,11 +4,15 @@
   "description": "Authentication Sprint Challenge",
   "main": "index.js",
   "scripts": {
-    "server": "nodemon index.js"
+    "server": "nodemon index.js",
+    "test": "cross-env DB_ENV=testing jest --watchAll"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/LambdaSchool/Sprint-Challenge-Authentication.git"
+  },
+  "jest": {
+    "testEnvirnoment": "node"
   },
   "keywords": [],
   "author": "Lambda School",
