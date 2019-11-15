@@ -19,4 +19,11 @@ describe("server", () => {
       expect(response.status).toBe(500);
     });
   });
+
+  describe("jokes endpoint", () => {
+    test("Should return 401 when no token provided", async () => {
+      const response = await request(server).get("/api/jokes");
+      expect(response.status).toBe(401);
+    });
+  });
 });
